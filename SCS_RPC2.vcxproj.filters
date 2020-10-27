@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\lib">
+      <UniqueIdentifier>{d6d2368f-0394-4164-98f9-067ae7138632}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\sdk">
+      <UniqueIdentifier>{b3e01ff8-a63d-45b3-95f3-802dd5acc628}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\sdk\discord sdk">
+      <UniqueIdentifier>{5620e417-25e7-4238-a33e-9f6f8fe9adaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\sdk\discord sdk\cpp">
+      <UniqueIdentifier>{64351bc5-cd49-4b94-bd63-096b57590e24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\sdk\discord sdk\lib">
+      <UniqueIdentifier>{7dfe7d6c-99a3-4207-813a-c8732a44ab09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\sdk\discord sdk\lib\x86">
+      <UniqueIdentifier>{ce0cdf45-9b77-49a3-ad23-f42d1bd3b4f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\sdk\discord sdk\lib\x86_64">
+      <UniqueIdentifier>{6a543b62-7649-4974-a58f-2810c8a8cfd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\sdk\telemetry sdk">
+      <UniqueIdentifier>{6e12429d-2cc8-4103-970c-7adc343ad05d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\sdk\telemetry sdk\amtrucks">
+      <UniqueIdentifier>{83179bd1-6da7-4db3-b234-cbe133ca4a36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\sdk\telemetry sdk\eurotrucks2">
+      <UniqueIdentifier>{7b271def-f981-49d4-bdce-72a3c62da508}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lib\sdk\telemetry sdk\common">
+      <UniqueIdentifier>{f0d5e46f-0899-4d90-a271-11855a144eaf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="handlers.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="helper_functions.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\kd_tree.h">
+      <Filter>Source Files\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="cities_ats.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cities_ets2.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\discord sdk\cpp\activity_manager.h">
+      <Filter>Source Files\lib\sdk\discord sdk\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\discord sdk\cpp\core.h">
+      <Filter>Source Files\lib\sdk\discord sdk\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\discord sdk\cpp\discord.h">
+      <Filter>Source Files\lib\sdk\discord sdk\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\discord sdk\cpp\event.h">
+      <Filter>Source Files\lib\sdk\discord sdk\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\discord sdk\cpp\ffi.h">
+      <Filter>Source Files\lib\sdk\discord sdk\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\discord sdk\cpp\types.h">
+      <Filter>Source Files\lib\sdk\discord sdk\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\telemetry sdk\scssdk.h">
+      <Filter>Source Files\lib\sdk\telemetry sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\telemetry sdk\scssdk_telemetry.h">
+      <Filter>Source Files\lib\sdk\telemetry sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\telemetry sdk\scssdk_telemetry_channel.h">
+      <Filter>Source Files\lib\sdk\telemetry sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\telemetry sdk\scssdk_telemetry_event.h">
+      <Filter>Source Files\lib\sdk\telemetry sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\telemetry sdk\scssdk_value.h">
+      <Filter>Source Files\lib\sdk\telemetry sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\telemetry sdk\eurotrucks2\scssdk_eut2.h">
+      <Filter>Source Files\lib\sdk\telemetry sdk\eurotrucks2</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\telemetry sdk\eurotrucks2\scssdk_telemetry_eut2.h">
+      <Filter>Source Files\lib\sdk\telemetry sdk\eurotrucks2</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\telemetry sdk\common\scssdk_telemetry_common_channels.h">
+      <Filter>Source Files\lib\sdk\telemetry sdk\common</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\telemetry sdk\common\scssdk_telemetry_common_configs.h">
+      <Filter>Source Files\lib\sdk\telemetry sdk\common</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\telemetry sdk\common\scssdk_telemetry_common_gameplay_events.h">
+      <Filter>Source Files\lib\sdk\telemetry sdk\common</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\telemetry sdk\common\scssdk_telemetry_job_common_channels.h">
+      <Filter>Source Files\lib\sdk\telemetry sdk\common</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\telemetry sdk\common\scssdk_telemetry_trailer_common_channels.h">
+      <Filter>Source Files\lib\sdk\telemetry sdk\common</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\telemetry sdk\common\scssdk_telemetry_truck_common_channels.h">
+      <Filter>Source Files\lib\sdk\telemetry sdk\common</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\telemetry sdk\amtrucks\scssdk_ats.h">
+      <Filter>Source Files\lib\sdk\telemetry sdk\amtrucks</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\sdk\telemetry sdk\amtrucks\scssdk_telemetry_ats.h">
+      <Filter>Source Files\lib\sdk\telemetry sdk\amtrucks</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SCS_RPC2.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="lib\sdk\discord sdk\lib\x86_64\discord_game_sdk.bundle">
+      <Filter>Source Files\lib\sdk\discord sdk\lib\x86_64</Filter>
+    </None>
+    <None Include="lib\sdk\discord sdk\lib\x86_64\discord_game_sdk.dll">
+      <Filter>Source Files\lib\sdk\discord sdk\lib\x86_64</Filter>
+    </None>
+    <None Include="lib\sdk\discord sdk\lib\x86_64\discord_game_sdk.dylib">
+      <Filter>Source Files\lib\sdk\discord sdk\lib\x86_64</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SCS_RPC2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="custom_types.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\sdk\discord sdk\cpp\activity_manager.cpp">
+      <Filter>Source Files\lib\sdk\discord sdk\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\sdk\discord sdk\cpp\core.cpp">
+      <Filter>Source Files\lib\sdk\discord sdk\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\sdk\discord sdk\cpp\types.cpp">
+      <Filter>Source Files\lib\sdk\discord sdk\cpp</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\sdk\discord sdk\lib\x86_64\discord_game_sdk.dll.lib">
+      <Filter>Source Files\lib\sdk\discord sdk\lib\x86_64</Filter>
+    </Library>
+    <Library Include="lib\sdk\discord sdk\lib\x86_64\discord_game_sdk.so">
+      <Filter>Source Files\lib\sdk\discord sdk\lib\x86_64</Filter>
+    </Library>
+  </ItemGroup>
+</Project>

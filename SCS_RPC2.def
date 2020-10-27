@@ -1,0 +1,5 @@
+LIBRARY SCS_RPC2
+EXPORTS
+EntryName=SCS_RPC2.DllMain
+scs_telemetry_init=scs_telemetry_init
+scs_telemetry_shutdown=scs_telemetry_shutdown
