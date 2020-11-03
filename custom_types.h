@@ -48,7 +48,7 @@ typedef kdtree<double, 2> tree2d;
 	std::unique_ptr<discord::Core> discordCore;
 
 	long start_timestamp;
-	tree2d* cities{};
+	std::unique_ptr<tree2d> cities{};
 
 	bool paused = true;
 	int game;

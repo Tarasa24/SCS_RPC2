@@ -24,7 +24,7 @@ SCSAPI_VOID handle_frame_start(const scs_event_t UNUSED(event), const void* cons
 	if (telemetry->game == ETS2) small_text << telemetry->truck.brand << " " << telemetry->truck.name <<" (" << (int)(telemetry->speed * 3.6) << " km/h)";
 	else if (telemetry->game == ATS) small_text << telemetry->truck.brand << " " << telemetry->truck.name << " (" << (int)(telemetry->speed * 2.237) << " mph)";
 
-	set_activity(telemetry->paused ? "Paused" : on_job ? details.str() : u8"🚚 Free roaming 💨",
+	set_activity(!telemetry->position.avalible || telemetry->paused ? "Paused" : on_job ? details.str() : u8"🚚 Free roaming 💨",
 				!telemetry->position.avalible || telemetry->paused ? "" : state.str(),
 				small_image.str(), small_text.str(), telemetry);
 
@@ -88,8 +88,11 @@ SCSAPI_VOID handle_configuration(const scs_event_t event, const void* const even
 	std::string id = info->id;
 
 	if (id.compare(SCS_TELEMETRY_CONFIG_job) == 0) {
-		for (const scs_named_value_t* current = info->attributes; current->name; ++current) {
+		for (size_t i = 0; i < sizeof(info->attributes) / sizeof(scs_named_value_t); i++)
+		{
+			const scs_named_value_t* current = &info->attributes[i];
 			const std::string name = current->name;
+
 			if (name.compare(SCS_TELEMETRY_CONFIG_ATTRIBUTE_cargo) == 0) {
 				telemetry->cargo.name = current->value.value_string.value;
 			}
@@ -102,8 +105,11 @@ SCSAPI_VOID handle_configuration(const scs_event_t event, const void* const even
 		}
 	}
 	else if (id.compare(SCS_TELEMETRY_CONFIG_truck) == 0) {
-		for (const scs_named_value_t* current = info->attributes; current->name; ++current) {
+		for (size_t i = 0; i < sizeof(info->attributes) / sizeof(scs_named_value_t); i++)
+		{
+			const scs_named_value_t* current = &info->attributes[i];
 			const std::string name = current->name;
+
 			if (name.compare(SCS_TELEMETRY_CONFIG_ATTRIBUTE_brand) == 0) {
 				telemetry->truck.brand = current->value.value_string.value;
 			}

@@ -3,6 +3,7 @@
 #include <string>
 #include <chrono>
 #include <vector>
+#include <memory>
 
 #include "cities_ets2.h"
 #include "cities_ats.h"
@@ -38,7 +39,7 @@ void set_activity(std::string details, std::string state, std::string smallImage
 	telemetry->discordCore->ActivityManager().UpdateActivity(activity, [](discord::Result result) {});
 }
 
-tree2d* construct_tree(telemetry_state* telemetry) {
+std::unique_ptr<tree2d> construct_tree(telemetry_state* telemetry) {
 	city* cities = NULL;
 	size_t length;
 
@@ -69,5 +70,5 @@ tree2d* construct_tree(telemetry_state* telemetry) {
 		points.push_back(p);
 	}
 
-	return new tree2d(std::begin(points), std::end(points));
+	return std::make_unique<tree2d>(std::begin(points), std::end(points));
 }

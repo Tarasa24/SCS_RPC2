@@ -35,10 +35,12 @@
 #include "custom_types.h"
 #include "handlers.h"
 
-telemetry_state telemetry;
+telemetry_state telemetry{};
 
 SCSAPI_RESULT scs_telemetry_init(const scs_u32_t version, const scs_telemetry_init_params_t* const params)
 {
+	memset(&telemetry, 0, sizeof(telemetry));
+
 	const scs_telemetry_init_params_v101_t* const version_params = static_cast<const scs_telemetry_init_params_v101_t*>(params);
 	game_log = version_params->common.log;
 
@@ -60,14 +62,22 @@ SCSAPI_RESULT scs_telemetry_init(const scs_u32_t version, const scs_telemetry_in
 
 	telemetry.cities = construct_tree(&telemetry);
 
-	version_params->register_for_event(SCS_TELEMETRY_EVENT_frame_start, handle_frame_start, &telemetry);
-	version_params->register_for_event(SCS_TELEMETRY_EVENT_paused, handle_pause_start, &telemetry);
-	version_params->register_for_event(SCS_TELEMETRY_EVENT_started, handle_pause_start, &telemetry);
-	version_params->register_for_channel(SCS_TELEMETRY_TRUCK_CHANNEL_world_placement, SCS_U32_NIL, SCS_VALUE_TYPE_dvector, SCS_TELEMETRY_CHANNEL_FLAG_no_value, handle_position, &telemetry);
-	version_params->register_for_channel(SCS_TELEMETRY_TRUCK_CHANNEL_speed, SCS_U32_NIL, SCS_VALUE_TYPE_float, SCS_TELEMETRY_CHANNEL_FLAG_no_value, handle_speed, &telemetry);
-	version_params->register_for_channel(SCS_TELEMETRY_TRUCK_CHANNEL_navigation_distance, SCS_U32_NIL, SCS_VALUE_TYPE_float, SCS_TELEMETRY_CHANNEL_FLAG_no_value, handle_distance, &telemetry);
-	version_params->register_for_channel(SCS_TELEMETRY_TRAILER_CHANNEL_connected, SCS_U32_NIL, SCS_VALUE_TYPE_bool, SCS_TELEMETRY_CHANNEL_FLAG_no_value, handle_trailer_connect, &telemetry);
-	version_params->register_for_event(SCS_TELEMETRY_EVENT_configuration, handle_configuration, &telemetry);
+	bool registered = (
+		version_params->register_for_event(SCS_TELEMETRY_EVENT_frame_start, handle_frame_start, &telemetry) == SCS_RESULT_ok &&
+		version_params->register_for_event(SCS_TELEMETRY_EVENT_paused, handle_pause_start, &telemetry) == SCS_RESULT_ok &&
+		version_params->register_for_event(SCS_TELEMETRY_EVENT_started, handle_pause_start, &telemetry) == SCS_RESULT_ok &&
+		version_params->register_for_channel(SCS_TELEMETRY_TRUCK_CHANNEL_world_placement, SCS_U32_NIL, SCS_VALUE_TYPE_dvector, SCS_TELEMETRY_CHANNEL_FLAG_no_value, handle_position, &telemetry) == SCS_RESULT_ok &&
+		version_params->register_for_channel(SCS_TELEMETRY_TRUCK_CHANNEL_speed, SCS_U32_NIL, SCS_VALUE_TYPE_float, SCS_TELEMETRY_CHANNEL_FLAG_no_value, handle_speed, &telemetry) == SCS_RESULT_ok &&
+		version_params->register_for_channel(SCS_TELEMETRY_TRUCK_CHANNEL_navigation_distance, SCS_U32_NIL, SCS_VALUE_TYPE_float, SCS_TELEMETRY_CHANNEL_FLAG_no_value, handle_distance, &telemetry) == SCS_RESULT_ok &&
+		version_params->register_for_channel(SCS_TELEMETRY_TRAILER_CHANNEL_connected, SCS_U32_NIL, SCS_VALUE_TYPE_bool, SCS_TELEMETRY_CHANNEL_FLAG_no_value, handle_trailer_connect, &telemetry) == SCS_RESULT_ok &&
+		version_params->register_for_event(SCS_TELEMETRY_EVENT_configuration, handle_configuration, &telemetry) == SCS_RESULT_ok
+	);
+
+	if (!registered)
+	{
+		log_ingame("Unable to register callbacks");
+		return SCS_RESULT_generic_error;
+	}
 
 	telemetry.start_timestamp = seconds_since_epoch();
 
