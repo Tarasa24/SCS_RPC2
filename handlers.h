@@ -6,7 +6,7 @@
 #include "custom_types.h"
 #include "helper_functions.h"
 
-SCSAPI_VOID handle_frame_start(const scs_event_t UNUSED(event), const void* const event_info, const scs_context_t context) {
+SCSAPI_VOID handle_frame_start(const scs_event_t UNUSED(event), const void* const UNUSED(event_info), const scs_context_t context) {
 	telemetry_state* const telemetry = static_cast<telemetry_state*>(context);
 
 	std::stringstream state;
@@ -41,7 +41,7 @@ SCSAPI_VOID handle_pause_start(const scs_event_t event, const void* const UNUSED
 SCSAPI_VOID handle_position(const scs_string_t name, const scs_u32_t index, const scs_value_t* const value, const scs_context_t context) {
 	telemetry_state* const telemetry = static_cast<telemetry_state*>(context);
 
-	if (!value) {
+	if (value == NULL) {
 		telemetry->position.avalible = false;
 		return;
 	}
@@ -53,23 +53,26 @@ SCSAPI_VOID handle_position(const scs_string_t name, const scs_u32_t index, cons
 	point2d p{ (double)telemetry->position.x, (double)telemetry->position.z };
 	point2d closest_city = telemetry->cities->nearest(p);
 
-	telemetry->position.closestCity = closest_city.name;
-	telemetry->position.country = closest_city.country;
+	telemetry->position.closestCity = static_cast<std::string>(closest_city.name);
+	telemetry->position.country = static_cast<std::string>(closest_city.country);
 }
 
 SCSAPI_VOID handle_speed(const scs_string_t name, const scs_u32_t index, const scs_value_t* const value, const scs_context_t context) {
+	if (value == NULL) return;
 	telemetry_state* const telemetry = static_cast<telemetry_state*>(context);
 
 	telemetry->speed = value->value_float.value;
 }
 
 SCSAPI_VOID handle_distance(const scs_string_t name, const scs_u32_t index, const scs_value_t* const value, const scs_context_t context) {
+	if (value == NULL) return;
 	telemetry_state* const telemetry = static_cast<telemetry_state*>(context);
 
 	telemetry->distance = value->value_float.value;
 }
 
 SCSAPI_VOID handle_trailer_connect(const scs_string_t name, const scs_u32_t index, const scs_value_t* const value, const scs_context_t context) {
+	if (value == NULL) return;
 	telemetry_state* const telemetry = static_cast<telemetry_state*>(context);
 
 	if (value) {
@@ -82,19 +85,17 @@ SCSAPI_VOID handle_trailer_connect(const scs_string_t name, const scs_u32_t inde
 
 SCSAPI_VOID handle_configuration(const scs_event_t event, const void* const event_info, const scs_context_t context)
 {
+	if (event_info == NULL) return;
 	telemetry_state* const telemetry = static_cast<telemetry_state*>(context);
 	const struct scs_telemetry_configuration_t* const info = static_cast<const scs_telemetry_configuration_t*>(event_info);
 
 	std::string id = info->id;
 
 	if (id.compare(SCS_TELEMETRY_CONFIG_job) == 0) {
-		for (size_t i = 0; i < sizeof(info->attributes) / sizeof(scs_named_value_t); i++)
-		{
-			const scs_named_value_t* current = &info->attributes[i];
+		for (const scs_named_value_t* current = info->attributes; current->name; ++current) {
 			const std::string name = current->name;
-
 			if (name.compare(SCS_TELEMETRY_CONFIG_ATTRIBUTE_cargo) == 0) {
-				telemetry->cargo.name = current->value.value_string.value;
+				telemetry->cargo.name = static_cast<std::string>(current->value.value_string.value);
 			}
 			else if (name.compare(SCS_TELEMETRY_CONFIG_ATTRIBUTE_cargo_mass) == 0) {
 				telemetry->cargo.weight = current->value.value_float.value;
@@ -105,16 +106,13 @@ SCSAPI_VOID handle_configuration(const scs_event_t event, const void* const even
 		}
 	}
 	else if (id.compare(SCS_TELEMETRY_CONFIG_truck) == 0) {
-		for (size_t i = 0; i < sizeof(info->attributes) / sizeof(scs_named_value_t); i++)
-		{
-			const scs_named_value_t* current = &info->attributes[i];
+		for (const scs_named_value_t* current = info->attributes; current->name; ++current) {
 			const std::string name = current->name;
-
 			if (name.compare(SCS_TELEMETRY_CONFIG_ATTRIBUTE_brand) == 0) {
-				telemetry->truck.brand = current->value.value_string.value;
+				telemetry->truck.brand = static_cast<std::string>(current->value.value_string.value);
 			}
 			else if (name.compare(SCS_TELEMETRY_CONFIG_ATTRIBUTE_name) == 0) {
-				telemetry->truck.name = current->value.value_string.value;
+				telemetry->truck.name = static_cast<std::string>(current->value.value_string.value);
 			}
 		}
 	}
