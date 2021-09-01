@@ -18,7 +18,7 @@ Discord Rich Presence plugin for ETS2 and ATS
 
 ## General info
 
-Second verions of [SCS_RPC](https://github.com/Tarasa24/SCS_RPC), this time written in C++ using offical [Telemetry SDK](https://modding.scssoft.com/wiki/Documentation/Engine/SDK/Telemetry) for interacting with game data, as well as latest [Discord Game SDK](https://discord.com/developers/docs/game-sdk/sdk-starter-guide) for connecting to RPC pipe. Compiled dlls for both 64 and 32 bit version can be found in the [Releases page](https://github.com/Tarasa24/SCS_RPC2/releases).
+Second version of [SCS_RPC](https://github.com/Tarasa24/SCS_RPC), this time written in C++ using offical [Telemetry SDK](https://modding.scssoft.com/wiki/Documentation/Engine/SDK/Telemetry) for interacting with game data, as well as latest [Discord Game SDK](https://discord.com/developers/docs/game-sdk/sdk-starter-guide) for connecting to RPC pipe. Compiled dlls for both 64 and 32 bit version can be found in the [Releases page](https://github.com/Tarasa24/SCS_RPC2/releases).
 
 ##### What's new?
 
