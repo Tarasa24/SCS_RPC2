@@ -1,9 +1,0 @@
-# Build results
-out/x64/
-out/x86/
-
-# Visual Studio cache/options directory
-.vs/
-
-# User-specific files
-*.user

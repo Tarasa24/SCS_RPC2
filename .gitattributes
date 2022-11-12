@@ -1,5 +1,0 @@
-# Auto detect text files and perform LF normalization
-* text=auto
-
-lib/* linguist-vendored
-*.h linguist-language=C++
