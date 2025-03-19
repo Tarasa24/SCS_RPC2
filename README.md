@@ -2,7 +2,13 @@
 Discord Rich Presence plugin for ETS2 and ATS
 ___
 
-Project is currently in the process of rebuilding.
-If you are interested in contributing, please do check out the [projects page](https://github.com/Tarasa24/SCS_RPC2/projects) for currently needed issues.
+Project is currently in a long term process of rebuilding using rust via bindings to the c++ telemetry sdk. Note that this is nowhere near my primary project.
 
-In case you are looking for v1 check out its [read-only historical branch](https://github.com/Tarasa24/SCS_RPC2/tree/v1).
+Current roadmap:
+- [ ] Wrap my head around bindgen and even rust for that matter
+- [ ] Rewrite standing functionality using rust
+  - [ ] Definitely rewrite data structure holding cities on a map
+  - [ ] Ad. cities - have an automated process of extracting city names and locations directly from gamefiles
+- [ ] Profit?
+
+In case you are looking for v1 check out its [read-only historical branch](https://github.com/Tarasa24/SCS_RPC2/tree/v1). > TW: terrible c++ code on display, but it "It Just Works™"
